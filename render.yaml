@@ -1,0 +1,10 @@
+version: 1
+services:
+  - type: web
+    name: breebirthday
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    autoDeploy: true
+
