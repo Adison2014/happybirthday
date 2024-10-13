@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Include Axios -->
+</head>
+<body>
+    <!-- Background Music (muted initially) -->
+    <audio id="background-music" autoplay loop muted>
+        <source src="/audio/jay_webb_booty_cheeks_official_lyric_video_mp3_59061.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <!-- Scrolling message moved outside the card -->
+        <div class="scrolling-message">
+            <div class="scrolling-content">
+                Happy Birthday! My dear future wife, may God bless you with abundant joy on your birthday and always! Thank you for always being by my side and having my back.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="outside">
+                <h1>Happy Birthday</h1>
+            </div>
+            <div class="inside">
+                <img src="/images/cakegif.gif" alt="Birthday Cake"/>
+                <h3>Sending you an infinite amount of love, joy, and happiness on your birthday!</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="frames frame1">
+                <img src="/images/IMG-20240724-WA0031.jpg" alt="Smiling Image">
+                <p>Keep smiling, Keep shining</p>
+            </div>
+            <div class="frames frame2">
+                <img src="/images/IMG-20240802-WA0056.jpg" alt="Happy Occasion">
+                <p>On this occasion, bring you lots of happiness and success</p>
+            </div>
+            <div class="frames frame3">
+                <img src="/images/Screenshot_20240919-155830.png" alt="Blessing Image">
+                <p>May God bless you on your birthday, and always</p>
+            </div>
+        </div>
+
+        <!-- Button to load email.html page -->
+        <button id="send-email-button" class="email-button" onclick="location.href='/email';">Send Birthday Wishes</button>
+    </div>
+
+    <script>
+        // Function to unmute and play the audio after any click on the page
+        function playAudio() {
+            const audio = document.getElementById('background-music');
+            audio.muted = false; // Unmute the audio
+            audio.play() // Play the audio
+                .catch(error => console.error('Error playing audio:', error));
+
+            // Remove the event listener after the first click to prevent repeated execution
+            document.removeEventListener('click', playAudio);
+        }
+
+        // Add event listener to detect any click on the page
+        document.addEventListener('click', playAudio);
+    </script>
+</body>
+</html>

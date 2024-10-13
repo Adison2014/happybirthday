@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Gift</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Popup Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            text-align: center; /* Centering text in modal */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .container {
+            text-align: center; /* Centering content in the container */
+            margin-top: 50px; /* Adding top margin for better visibility */
+        }
+
+        /* Additional styles for button */
+        #send-email-button {
+            margin-top: 20px; /* Adding some space above the button */
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music (muted initially) -->
+    <audio id="background-music" autoplay loop muted>
+        <source src="/audio/jay_webb_booty_cheeks_official_lyric_video_mp3_59061.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <div class="card1">
+            <h1>Happy Birthday!</h1>
+            <h3>Enter your email to receive a special gift!</h3>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <button id="send-email-button">Send Gift</button>
+            <p id="response-message"></p>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Gift notification sent successfully! 🎁</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Function to send the email to the server
+        async function sendGiftEmail() {
+            const email = document.getElementById('email').value;
+            const responseMessage = document.getElementById('response-message');
+
+            try {
+                const response = await axios.post('/send-email', {
+                    senderEmail: email // Sending only the sender's email
+                });
+                
+                // Show the modal
+                const modal = document.getElementById("success-modal");
+                modal.style.display = "block";
+
+                // Close the modal when the user clicks on <span> (x)
+                const span = document.getElementsByClassName("close")[0];
+                span.onclick = function() {
+                    modal.style.display = "none";
+                };
+
+                // Close the modal if the user clicks anywhere outside of the modal
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                };
+
+                // Redirect to index.html after showing the modal
+                setTimeout(() => {
+                    modal.style.display = "none"; // Hide modal
+                    window.location.href = '/'; // Redirect to index.html
+                }, 2000); // Redirect after 2 seconds
+
+                responseMessage.textContent = ''; // Clear response message
+            } catch (error) {
+                console.error('Error sending email:', error);
+                responseMessage.textContent = 'Failed to send gift notification. Please try again.';
+                responseMessage.style.color = 'red';
+            }
+        }
+
+        // Add event listener for the button click
+        document.getElementById('send-email-button').addEventListener('click', sendGiftEmail);
+
+        // Function to unmute and play the audio after any click on the page
+        function playAudio() {
+            const audio = document.getElementById('background-music');
+            audio.muted = false; // Unmute the audio
+            audio.play(); // Play the audio
+
+            // Remove the event listener after the first click to prevent repeated execution
+            document.removeEventListener('click', playAudio);
+        }
+
+        // Add event listener to detect any click on the page
+        document.addEventListener('click', playAudio);
+    </script>
+</body>
+</html>
