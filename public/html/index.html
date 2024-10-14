@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday</title>
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Include Axios -->
 </head>
 <body>
-    <!-- Background Music (muted initially) -->
     <audio id="background-music" autoplay loop muted>
         <source src="/audio/jay_webb_booty_cheeks_official_lyric_video_mp3_59061.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
+    <button id="send-email-button" class="button"">Click me and scroll down</button>
+
+    <button id="send-email-button" class="email-button" onclick="location.href='/email';">Click Me</button>
     <div class="container">
-        <!-- Scrolling message moved outside the card -->
         <div class="scrolling-message">
             <div class="scrolling-content">
-                Happy Birthday! My dear future wife, may God bless you with abundant joy on your birthday and always! Thank you for always being by my side and having my back.
+                Happy Birthday! My future wife, may God bless you with abundant joy on your birthday and always.You deserve all the love, happiness, and cake today. I’m so lucky to have you by my side. Here's to more birthdays together! 🎉👑. Thank you for always being by my side. I LOVE YOU
             </div>
         </div>
 
@@ -29,7 +28,7 @@
             </div>
             <div class="inside">
                 <img src="/images/cakegif.gif" alt="Birthday Cake"/>
-                <h3>Sending you an infinite amount of love, joy, and happiness on your birthday!</h3>
+                <h3>To the girl who stole my heart, happy birthday! You're my sunshine on a cloudy day and my joy in every moment. I love you more than words can say. 🎂❤️</h3>
             </div>
         </div>
 
@@ -44,28 +43,12 @@
             </div>
             <div class="frames frame3">
                 <img src="/images/Screenshot_20240919-155830.png" alt="Blessing Image">
-                <p>May God bless you on your birthday, and always</p>
+                <p>May God bless you on your birthday</p>
             </div>
         </div>
 
-        <!-- Button to load email.html page -->
-        <button id="send-email-button" class="email-button" onclick="location.href='/email';">Send Birthday Wishes</button>
     </div>
 
-    <script>
-        // Function to unmute and play the audio after any click on the page
-        function playAudio() {
-            const audio = document.getElementById('background-music');
-            audio.muted = false; // Unmute the audio
-            audio.play() // Play the audio
-                .catch(error => console.error('Error playing audio:', error));
-
-            // Remove the event listener after the first click to prevent repeated execution
-            document.removeEventListener('click', playAudio);
-        }
-
-        // Add event listener to detect any click on the page
-        document.addEventListener('click', playAudio);
-    </script>
+    <script src="/javascipt/script.js"></script>
 </body>
 </html>

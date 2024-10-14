@@ -51,7 +51,7 @@ app.post('/send-email', async (req, res) => {
 });
 
 
-// Endpoint to send gift email from email.html
+// Endpoint to trigger email notification for birthday wishes
 app.post('/send-gift', async (req, res) => {
     const { email } = req.body;
 
@@ -70,6 +70,7 @@ app.post('/send-gift', async (req, res) => {
         res.status(500).send('Failed to send gift notification');
     }
 });
+
 
 // Start the server
 app.listen(3000, () => {
