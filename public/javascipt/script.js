@@ -31,7 +31,7 @@ async function sendGiftEmail() {
 
         setTimeout(() => {
             modal.style.display = "none";
-            window.location.href = '/';
+            window.location.href = '/special';
         }, 2000);
 
         responseMessage.textContent = '';
@@ -52,3 +52,5 @@ function playAudio() {
 }
 
 document.addEventListener('click', playAudio);
+
+document.getElementById('bgVideo').play();

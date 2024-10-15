@@ -12,6 +12,10 @@ app.get('/email', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'email.html')); // Path to email.html
 });
 
+app.get('/special', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'slidecards.html')); // Path to slidecards.html
+});
+
 // Serve the index.html file when the root URL is accessed
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'index.html')); // Path to index.html
@@ -28,28 +32,27 @@ const transporter = nodemailer.createTransport({
 
 // Endpoint to trigger email notification for birthday wishes
 app.post('/send-email', async (req, res) => {
-  const { senderEmail } = req.body; // Expecting senderEmail in the request body
+    const { senderEmail } = req.body; // Expecting senderEmail in the request body
 
-  // Predefined message
-  const message = 'I just sent you a message! I want my gift'; // Customize your message
+    // Predefined message
+    const message = 'I just sent you a message! I want my gift'; // Customize your message
 
-  // Email options
-  const mailOptions = {
-      from: senderEmail, // Sender's email address
-      to: 'adisoncheruiyot55@gmail.com', // Replace with the recipient's email address
-      subject: 'Notification from Happy Birthday Website',
-      text: message // The predefined message content
-  };
+    // Email options
+    const mailOptions = {
+        from: senderEmail, // Sender's email address
+        to: 'adisoncheruiyot55@gmail.com', // Replace with the recipient's email address
+        subject: 'Notification from Happy Birthday Website',
+        text: message // The predefined message content
+    };
 
-  try {
-      await transporter.sendMail(mailOptions); // Send the email
-      res.sendStatus(200); // Respond with a 200 OK status
-  } catch (error) {
-      console.error('Error sending email:', error);
-      res.status(500).send('Failed to send email');
-  }
+    try {
+        await transporter.sendMail(mailOptions); // Send the email
+        res.sendStatus(200); // Respond with a 200 OK status
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Failed to send email');
+    }
 });
-
 
 // Endpoint to trigger email notification for birthday wishes
 app.post('/send-gift', async (req, res) => {
@@ -70,7 +73,6 @@ app.post('/send-gift', async (req, res) => {
         res.status(500).send('Failed to send gift notification');
     }
 });
-
 
 // Start the server
 app.listen(3000, () => {

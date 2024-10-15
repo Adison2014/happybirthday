@@ -213,7 +213,7 @@ body {
     font-size: 18px;
     position: absolute;
     display: block;
-    bottom: -210px;
+    bottom: 10px;
     left: 10px;
     align-items: center;
     color: rgb(0, 0, 0);
