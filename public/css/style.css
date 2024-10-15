@@ -237,6 +237,10 @@ button {
     margin-top: 20px;
 }
 
+#bgVideo {
+    display: none; /* Hides the video element */
+}
+
 /* Styles for the scrolling effect */
 .scrolling-message {
     font-weight: bold;
