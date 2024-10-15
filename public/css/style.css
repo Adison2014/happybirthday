@@ -290,6 +290,10 @@ button {
     .frames {
         width: 400px; 
     }
+
+.email-button {
+    bottom: 10px;
+}
 }
 
 @media (max-width: 530px) {
